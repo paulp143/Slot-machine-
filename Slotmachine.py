@@ -109,7 +109,7 @@ while True :
             break
         else:
             print(*([results[0]]*wheels))
-            spins+=1
+            
     else:
         print(*results[:wheels])
     time.sleep(0.5)
@@ -130,8 +130,10 @@ while True :
             money+bet*10
             if insane=="y":
                 money+=bet*50
+        spins+=1
     else:
         if wheels ==3:
+            
             if result1==result2 and result1==result3:
 
                 print("You Won")
