@@ -1,6 +1,7 @@
 import random
 import time
-
+succesful_spins=0
+unsuccesful_spins=0
 wheel1=[1,2,3]
 spins=1
 bet="0"
@@ -36,7 +37,13 @@ while True :
     if betinput=="all in":
         bet=money
     else:
-        bet=int(betinput)
+        while True:
+            try:
+                bet=int(betinput)
+                break
+            except ValueError:
+                print("Invalid input.")
+                betinput=input("How much do you want to bet ")
     while True:
         if money<int(bet):
             print("Invalid input.")
@@ -131,7 +138,9 @@ while True :
             if insane=="y":
                 money+=bet*50
         spins+=1
+        succesful_spins+=1
     else:
+        
         if wheels ==3:
             
             if result1==result2 and result1==result3:
@@ -140,12 +149,14 @@ while True :
                 money+=bet
                 if insane=="y" and number==result1:
                     money=bet*50+money
+                succesful_spins+=1
                 
             else:
                 print("Better luck next time.")
                 money-=bet
                 if insane=="y":
                     money-=bet*50
+                unsuccesful_spins+=1
         if wheels ==4:
             if result1==result2 and result1==result3 and result1==result4:
 
@@ -153,11 +164,13 @@ while True :
                 money+=bet*2
                 if insane=="y" and number==result1:
                     money+=bet*50
+                succesful_spins+=1
             else:
                 print("Better luck next time.")
                 money-=bet
                 if insane=="y":
                     money-=bet*50
+                unsuccesful_spins+=1
         if wheels ==5:
             if result1==result2 and result1==result3 and result1==result4 and result1==result5:
 
@@ -165,13 +178,21 @@ while True :
                 money=bet*10+money
                 if insane=="y" and number==result1:
                     money+=bet*50
+                succesful_spins+=1
             else:
                 print("Better luck next time.")
                 money-=bet*4
                 if insane=="y":
                     money-=bet*50
+                unsuccesful_spins+=1
     if money<=0:
+        total_spins=unsuccesful_spins+succesful_spins
         print("You have lost.")
+        print("------Stats------")
+        print("Total Spins: ",total_spins)
+        print("Wins: ",succesful_spins)
+        print("Lost: ",unsuccesful_spins)
+        print("Wining percentage: ",round((succesful_spins/total_spins)*100),"%")
         break
     breakout=input("To stop press Q ").lower()
     if breakout=="q":
