@@ -36,6 +36,8 @@ while True :
     betinput=input("How much do you want to bet ").lower()
     if betinput=="all in":
         bet=money
+    elif betinput=="checkout":
+        break
     else:
         while True:
             try:
@@ -113,7 +115,7 @@ while True :
         if betinput=="all in":
             print(*results[:wheels])
             time.sleep(0.5)
-            break
+            
         else:
             print(*([results[0]]*wheels))
             
