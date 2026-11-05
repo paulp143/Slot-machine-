@@ -67,7 +67,7 @@ elif modus == "geld":
                 f"Spin {spins}: {results} LOSE | Guthaben: {geld}€"
             )
             verloren += 1
-            verlorenes_geld+=geld
+            verlorenes_geld+=einsatz
 
     print(f"\nKein Geld mehr übrig. Endguthaben: {geld}€")
 
